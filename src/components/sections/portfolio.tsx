@@ -8,13 +8,19 @@ interface PortfolioItem {
   githubUrl?: string;
 }
 
+// basePath対応のための画像パス生成
+const getImagePath = (filename: string) => {
+  const basePath = process.env.NODE_ENV === 'production' ? '/pakuo-WORKS' : '';
+  return `${basePath}/images/projects/${filename}`;
+};
+
 const portfolioItems: PortfolioItem[] = [
   {
     id: "beauty-salon",
     title: "美容サロンホームページ",
     description: "美容サロン向けのエレガントなホームページ。予約システム連携とモバイルファーストデザインを重視したバイブスコーディング作品。",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
-    image: "/images/projects/beauty-salon-preview.png",
+    image: getImagePath("beauty-salon-preview.png"),
     liveUrl: "https://pakuo3906.github.io/beauty-salon-website/",
     githubUrl: "https://github.com/pakuo3906/beauty-salon-website"
   },
@@ -23,7 +29,7 @@ const portfolioItems: PortfolioItem[] = [
     title: "パクログ",
     description: "日々の学習記録や技術的な発見を記録するバイブスな個人ブログ。マークダウン対応とSEO最適化を実装。",
     tech: ["Next.js", "TypeScript", "MDX", "Tailwind CSS"],
-    image: "/images/projects/pakulog-preview.png",
+    image: getImagePath("pakulog-preview.png"),
     liveUrl: "https://pakulog-ey3wccmzp-pa9wos-projects.vercel.app/",
     githubUrl: "https://github.com/pakuo3906/pakulog"
   }
