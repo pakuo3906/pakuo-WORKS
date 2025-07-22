@@ -1,33 +1,8 @@
-'use client'
-
-import { useState } from 'react';
-
 interface ContactSectionProps {
   className?: string;
 }
 
 export function Contact({ className = "" }: ContactSectionProps) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Basic form handling - in a real app you'd send this to an API
-    alert('Thank you for your message! This is a demo form.');
-    setFormData({ name: '', email: '', message: '' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
     <section id="contact" className={`min-h-screen bg-black text-white py-20 ${className}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,112 +10,51 @@ export function Contact({ className = "" }: ContactSectionProps) {
           <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-widest">
             Contact
           </h2>
-          <p className="text-xl text-white/70 font-mono tracking-wide max-w-3xl mx-auto">
-            Get in touch to explore 3D possibilities together.
+          <p className="text-xl text-white/70 font-light tracking-wide max-w-3xl mx-auto">
+            脱WordPressなウェブ制作のご相談はこちらから
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div>
-            <h3 className="text-2xl font-light tracking-wider mb-6">
-              Send a Message
-            </h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-mono text-white/70 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-colors"
-                  placeholder="Your name"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-mono text-white/70 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-colors"
-                  placeholder="your@email.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-mono text-white/70 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-white/40 transition-colors resize-none"
-                  placeholder="Tell us about your project..."
-                />
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full py-3 bg-white/10 border border-white/20 rounded-lg text-white font-mono tracking-wide hover:bg-white/20 transition-colors duration-200"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-
-          {/* Contact Info */}
+        <div className="max-w-2xl mx-auto">
           <div className="space-y-8">
-            <h3 className="text-2xl font-light tracking-wider mb-6">
-              Get in Touch
-            </h3>
+            <div className="text-center">
+              <h3 className="text-2xl font-light tracking-wider mb-8">
+                Get in Touch
+              </h3>
+            </div>
             
             <div className="space-y-6">
-              <div className="p-6 border border-white/20 rounded-lg">
-                <h4 className="font-mono text-lg mb-2 text-white">Email</h4>
-                <p className="text-white/70">contact@surfacetension.dev</p>
+              <div className="p-8 border border-white/20 rounded-lg text-center">
+                <h4 className="font-mono text-xl mb-4 text-white">Email</h4>
+                <a 
+                  href="mailto:contact@pakoworks.dev" 
+                  className="text-white/70 hover:text-white transition-colors text-lg"
+                >
+                  contact@pakoworks.dev
+                </a>
               </div>
               
-              <div className="p-6 border border-white/20 rounded-lg">
-                <h4 className="font-mono text-lg mb-2 text-white">Collaboration</h4>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  Interested in 3D web experiences? Let&apos;s discuss your project and explore 
-                  the possibilities of interactive design.
+              <div className="p-8 border border-white/20 rounded-lg text-center">
+                <h4 className="font-mono text-xl mb-4 text-white">ウェブ制作のご相談</h4>
+                <p className="text-white/70 text-sm leading-relaxed mb-4">
+                  WordPressからの脱却をお考えの方、バイブスコーディングによる
+                  オリジナルサイト制作をご希望の方はお気軽にご連絡ください。
                 </p>
-              </div>
-              
-              <div className="p-6 border border-white/20 rounded-lg">
-                <h4 className="font-mono text-lg mb-2 text-white">Response Time</h4>
-                <p className="text-white/70 text-sm">
-                  We typically respond within 24 hours during business days.
+                <p className="text-white/50 text-xs">
+                  通常24時間以内にご返信いたします
                 </p>
               </div>
             </div>
 
             {/* Social Links */}
-            <div className="pt-6 border-t border-white/20">
-              <h4 className="font-mono text-lg mb-4 text-white">Connect</h4>
-              <div className="flex space-x-4">
+            <div className="pt-8 text-center">
+              <h4 className="font-mono text-lg mb-6 text-white">Connect with me</h4>
+              <div className="flex justify-center space-x-6">
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/pakuo3906" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors p-3 border border-white/20 rounded-lg hover:border-white/40"
                 >
                   <span className="sr-only">GitHub</span>
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -148,10 +62,10 @@ export function Contact({ className = "" }: ContactSectionProps) {
                   </svg>
                 </a>
                 <a 
-                  href="https://twitter.com" 
+                  href="https://twitter.com/pako_works" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors p-3 border border-white/20 rounded-lg hover:border-white/40"
                 >
                   <span className="sr-only">Twitter</span>
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -159,10 +73,10 @@ export function Contact({ className = "" }: ContactSectionProps) {
                   </svg>
                 </a>
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://linkedin.com/in/pako-works" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors p-3 border border-white/20 rounded-lg hover:border-white/40"
                 >
                   <span className="sr-only">LinkedIn</span>
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
