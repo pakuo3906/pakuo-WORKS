@@ -53,8 +53,28 @@ export function Portfolio({ className = "" }: PortfolioSectionProps) {
               className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all duration-300"
             >
               <div className="mb-6">
-                <div className="w-full h-48 bg-gradient-to-br from-white/20 to-white/5 rounded-lg mb-4 overflow-hidden">
-                  {item.image ? (
+                <div className="w-full h-48 bg-gradient-to-br from-white/20 to-white/5 rounded-lg mb-4 overflow-hidden relative group">
+                  {item.image && item.liveUrl ? (
+                    <a 
+                      href={item.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full h-full cursor-pointer relative"
+                    >
+                      <img
+                        src={item.image}
+                        alt={`${item.title} preview`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                      {/* ホバー時のオーバーレイ */}
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="text-white text-center">
+                          <div className="text-lg mb-1">🔗</div>
+                          <div className="text-sm font-mono">View Live Site</div>
+                        </div>
+                      </div>
+                    </a>
+                  ) : item.image ? (
                     <img
                       src={item.image}
                       alt={`${item.title} preview`}
