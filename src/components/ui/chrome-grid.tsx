@@ -7,20 +7,36 @@ import * as THREE from 'three'
 import { isWebGLSupported } from '@/lib/webgl-check'
 import { ErrorBoundary } from './error-boundary'
 
-// Responsive camera configuration
-const getCameraConfig = () => {
+// Responsive camera and grid configuration
+const getResponsiveConfig = () => {
   if (typeof window === 'undefined') {
-    return { position: [-9.31, 12, 24.72] as [number, number, number], fov: 35 };
+    return { 
+      position: [-9.31, 12, 24.72] as [number, number, number], 
+      fov: 35,
+      gridSize: 10
+    };
   }
   
   const width = window.innerWidth;
   
-  if (width < 640) { // sm
-    return { position: [-9, 12, 30] as [number, number, number], fov: 45 };
-  } else if (width < 768) { // md
-    return { position: [-9, 12, 27] as [number, number, number], fov: 40 };
+  if (width < 640) { // sm - mobile
+    return { 
+      position: [-6, 10, 20] as [number, number, number], 
+      fov: 50,
+      gridSize: 5
+    };
+  } else if (width < 768) { // md - tablet
+    return { 
+      position: [-7.5, 11, 23] as [number, number, number], 
+      fov: 45,
+      gridSize: 7
+    };
   } else {
-    return { position: [-9.31, 12, 24.72] as [number, number, number], fov: 35 };
+    return { 
+      position: [-9.31, 12, 24.72] as [number, number, number], 
+      fov: 35,
+      gridSize: 10
+    };
   }
 };
 
@@ -33,6 +49,7 @@ interface BoxProps {
   hoveredBox: [number, number] | null;
   rippleScale?: number;
   rippleRadius?: number;
+  gridSize: number;
 }
 
 const Box = ({ 
@@ -43,7 +60,8 @@ const Box = ({
     gridPosition,
     hoveredBox,
     rippleScale = 0.3,
-    rippleRadius = 3
+    rippleRadius = 3,
+    gridSize
 }: BoxProps) => {
     const meshRef = useRef<THREE.Mesh>(null);
     const [currentScale, setCurrentScale] = useState(1);
@@ -66,15 +84,15 @@ const Box = ({
             bevelEnabled: true,
             bevelThickness: 0.05,
             bevelSize: 0.05,
-            bevelSegments: 20,
-            curveSegments: 20
+            bevelSegments: gridSize >= 10 ? 12 : 8,
+            curveSegments: gridSize >= 10 ? 12 : 8
         };
 
         const geometry = new ExtrudeGeometry(shape, extrudeSettings);
         geometry.center();
         
         return geometry;
-    }, [width, length, cornerRadius]);
+    }, [width, length, cornerRadius, gridSize]);
     
     useEffect(() => {
         return () => {
@@ -139,6 +157,7 @@ const Box = ({
 };
 
 function HoverDetector({ 
+  gridSize,
   onHoverChange 
 }: {
   gridSize: number;
@@ -147,8 +166,17 @@ function HoverDetector({
   onHoverChange: (hoveredBox: [number, number] | null) => void;
 }) {
   const { camera, raycaster, pointer, scene } = useThree();
+  const frameCount = useRef(0);
   
   useFrame(() => {
+    frameCount.current++;
+    // Reduce raycasting frequency on smaller grids
+    const skipFrames = gridSize <= 5 ? 2 : gridSize <= 7 ? 1 : 0;
+    
+    if (frameCount.current % (skipFrames + 1) !== 0) {
+      return;
+    }
+    
     raycaster.setFromCamera(pointer, camera);
     
     const intersects = raycaster.intersectObjects(scene.children, true);
@@ -171,7 +199,8 @@ function HoverDetector({
 }
 
 function GridOfBoxes() {
-  const gridSize = 10;
+  const [config, setConfig] = useState(getResponsiveConfig());
+  const gridSize = config.gridSize;
   const boxWidth = 4;
   const boxLength = 4;
   const gap = 0.05;
@@ -201,12 +230,23 @@ function GridOfBoxes() {
             hoveredBox={hoveredBox}
             rippleScale={rippleScale}
             rippleRadius={rippleRadius}
+            gridSize={gridSize}
           />
         );
       }
     }
     return boxArray;
   }, [hoveredBox, gridSize, boxWidth, boxLength, spacingX, spacingZ, rippleScale, rippleRadius]);
+
+  // Update config on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setConfig(getResponsiveConfig());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <>
@@ -239,7 +279,7 @@ const WebGLFallback = () => (
 );
 
 export function ChromeGrid() {
-  const [cameraConfig, setCameraConfig] = useState(getCameraConfig());
+  const [config, setConfig] = useState(getResponsiveConfig());
   const [webglSupported, setWebglSupported] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -247,7 +287,7 @@ export function ChromeGrid() {
     setWebglSupported(isWebGLSupported());
 
     const handleResize = () => {
-      setCameraConfig(getCameraConfig());
+      setConfig(getResponsiveConfig());
     };
 
     window.addEventListener('resize', handleResize);
@@ -272,9 +312,9 @@ export function ChromeGrid() {
     <ErrorBoundary>
       <div className="h-full w-full bg-black relative z-0">
         <Canvas camera={{ 
-          position: cameraConfig.position, 
+          position: config.position, 
           rotation: [-0.65, -0.2, -0.13],
-          fov: cameraConfig.fov 
+          fov: config.fov 
         }}>
           <ambientLight intensity={1} />
           
