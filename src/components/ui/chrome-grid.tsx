@@ -226,7 +226,7 @@ const WebGLFallback = () => (
   <div className="h-full w-full bg-black flex items-center justify-center">
     <div className="text-center text-white p-8">
       <h2 className="text-2xl font-light mb-4 tracking-widest">
-        Surface Tension
+        パクお。WORKS
       </h2>
       <p className="text-white/70 font-mono text-sm mb-4">
         Your device doesn&apos;t support 3D graphics.

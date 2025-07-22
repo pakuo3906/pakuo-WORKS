@@ -47,7 +47,7 @@ export function Navigation({ className = "" }: NavigationProps) {
             className="text-white font-light text-xl tracking-widest cursor-pointer"
             onClick={() => scrollToSection('hero')}
           >
-            Surface Tension
+            パクお。WORKS
           </div>
           
           <div className="hidden md:flex space-x-8">

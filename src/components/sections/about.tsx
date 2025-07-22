@@ -11,32 +11,34 @@ export function About({ className = "" }: AboutSectionProps) {
             About
           </h2>
           <p className="text-xl text-white/70 font-mono tracking-wide max-w-3xl mx-auto">
-            Exploring the intersection of technology and artistry through interactive 3D experiences.
+            バイブスでコーディングする男、パクお。のポートフォリオ
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-light tracking-wider mb-4">
-              Technology Stack
+              Profile
             </h3>
-            <div className="space-y-4">
-              <div className="p-4 border border-white/20 rounded-lg">
-                <h4 className="font-mono text-lg mb-2 text-white">React Three Fiber</h4>
-                <p className="text-white/70 text-sm">
-                  A React renderer for Three.js that brings 3D graphics to the web with declarative syntax.
+            <div className="space-y-4 text-white/70">
+              <p className="leading-relaxed">
+                歯科技工士として15年間、精密さと集中力を要する仕事に従事。
+                新たな可能性を求めて自ら転身を決意し、現在はウェブ制作の世界を探求中。
+              </p>
+              <p className="leading-relaxed">
+                動画編集、ウェブデザイン、AI活用ツールなど幅広い分野に興味を持ち、
+                日々新たな発見と成長を続けています。
+              </p>
+              <p className="leading-relaxed">
+                <span className="text-white font-mono">「バイブスコーディング」</span>を信条とし、
+                直感とクリエイティブな感性を大切にしながら、アプリケーション開発を学んでいます。
+              </p>
+              <div className="pt-4">
+                <p className="text-white font-mono text-lg">
+                  「パクお。AIには屈しない」
                 </p>
-              </div>
-              <div className="p-4 border border-white/20 rounded-lg">
-                <h4 className="font-mono text-lg mb-2 text-white">Three.js</h4>
-                <p className="text-white/70 text-sm">
-                  The powerful 3D library that enables complex geometries, materials, and lighting.
-                </p>
-              </div>
-              <div className="p-4 border border-white/20 rounded-lg">
-                <h4 className="font-mono text-lg mb-2 text-white">Next.js</h4>
-                <p className="text-white/70 text-sm">
-                  Modern React framework providing optimal performance and developer experience.
+                <p className="text-sm text-white/50 mt-2">
+                  - すべてバイブス -
                 </p>
               </div>
             </div>
@@ -44,31 +46,31 @@ export function About({ className = "" }: AboutSectionProps) {
 
           <div className="space-y-6">
             <h3 className="text-2xl font-light tracking-wider mb-4">
-              Interactive Features
+              Tech Skills
             </h3>
-            <div className="space-y-4 text-white/70">
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 rounded-full bg-white/50 mt-2 flex-shrink-0"></div>
-                <p>
-                  <span className="text-white font-mono">Hover Effects:</span> Each element responds to mouse interaction with smooth scaling animations.
+            <div className="space-y-4">
+              <div className="p-4 border border-white/20 rounded-lg">
+                <h4 className="font-mono text-lg mb-2 text-white">Next.js & React</h4>
+                <p className="text-white/70 text-sm">
+                  モダンなウェブアプリケーション開発のためのフレームワーク
                 </p>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 rounded-full bg-white/50 mt-2 flex-shrink-0"></div>
-                <p>
-                  <span className="text-white font-mono">Ripple Physics:</span> Surrounding elements react to create natural wave-like propagation.
+              <div className="p-4 border border-white/20 rounded-lg">
+                <h4 className="font-mono text-lg mb-2 text-white">TypeScript</h4>
+                <p className="text-white/70 text-sm">
+                  型安全性を重視した開発言語
                 </p>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 rounded-full bg-white/50 mt-2 flex-shrink-0"></div>
-                <p>
-                  <span className="text-white font-mono">Material Design:</span> Physically-based rendering creates realistic metallic surfaces.
+              <div className="p-4 border border-white/20 rounded-lg">
+                <h4 className="font-mono text-lg mb-2 text-white">Tailwind CSS</h4>
+                <p className="text-white/70 text-sm">
+                  効率的なスタイリングのためのCSSフレームワーク
                 </p>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 rounded-full bg-white/50 mt-2 flex-shrink-0"></div>
-                <p>
-                  <span className="text-white font-mono">Performance:</span> Optimized for 60fps with efficient memory management.
+              <div className="p-4 border border-white/20 rounded-lg">
+                <h4 className="font-mono text-lg mb-2 text-white">AI活用</h4>
+                <p className="text-white/70 text-sm">
+                  開発プロセスを効率化するためのAIツールの活用
                 </p>
               </div>
             </div>
