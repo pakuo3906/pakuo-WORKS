@@ -22,7 +22,7 @@ const portfolioItems: PortfolioItem[] = [
     title: "パクログ",
     description: "日々の学習記録や技術的な発見を記録するバイブスな個人ブログ。マークダウン対応とSEO最適化を実装。",
     tech: ["Next.js", "TypeScript", "MDX", "Tailwind CSS"],
-    liveUrl: "https://pakuo3906.github.io/pakulog/",
+    liveUrl: "https://pakulog-ey3wccmzp-pa9wos-projects.vercel.app/",
     githubUrl: "https://github.com/pakuo3906/pakulog"
   }
 ];
