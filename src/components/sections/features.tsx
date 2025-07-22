@@ -5,34 +5,34 @@ interface FeaturesSectionProps {
 export function Features({ className = "" }: FeaturesSectionProps) {
   const features = [
     {
-      title: "Interactive Grid",
-      description: "10x10 responsive grid of metallic elements that react to your cursor position.",
-      technical: "ExtrudeGeometry with corner radius and physical materials"
+      title: "脱WordPress",
+      description: "重いWordPressから解放された、軽量で柔軟性の高いモダンなウェブサイトを制作。ClaudeCode時代の新常識を提案します。",
+      technical: "Modern stack beyond traditional CMS"
     },
     {
-      title: "Ripple Physics",
-      description: "Realistic wave propagation effects that spread from interaction points.",
-      technical: "Distance-based scaling with configurable radius and falloff"
+      title: "バイブスコーディング",
+      description: "直感とクリエイティブな感性を大切にした開発アプローチ。技術的な厳密さよりも、自然な流れとバイブスを重視します。",
+      technical: "Intuition-driven development process"
     },
     {
-      title: "Chrome Materials",
-      description: "Physically-based rendering with metallic surfaces and clearcoat finish.",
-      technical: "meshPhysicalMaterial with metalness=1 and clearcoat=1"
+      title: "Headless CMS活用",
+      description: "従来のWordPressでもなく、複雑なフルスタックでもない「第三の選択肢」として、Headless CMSを活用したサイト制作。",
+      technical: "Headless CMS + Static Generation"
     },
     {
-      title: "Smooth Animation",
-      description: "60fps interpolated animations using linear interpolation for natural motion.",
-      technical: "useFrame hook with lerp factor for smooth transitions"
+      title: "AI活用開発",
+      description: "Claude Codeを始めとしたAI技術を効果的に組み合わせて、開発プロセスを効率化し、革新的なソリューションを提供します。",
+      technical: "Claude Code era development workflow"
     },
     {
-      title: "Memory Optimization",
-      description: "Efficient geometry management with proper cleanup and disposal.",
-      technical: "useEffect cleanup and geometry caching with useMemo"
+      title: "軽量・高速サイト",
+      description: "WordPressの重さから解放された、読み込みが早く、SEOに強い高性能なウェブサイトを制作します。",
+      technical: "Static generation + CDN optimization"
     },
     {
-      title: "Touch Support",
-      description: "Responsive design that works seamlessly across all device types.",
-      technical: "Raycaster-based interaction with pointer event handling"
+      title: "カスタム開発",
+      description: "テンプレートに縛られない、完全オリジナルのデザインとUXを提供。歯科技工士時代の精密さで細部まで作り込みます。",
+      technical: "Custom design with precision craftsmanship"
     }
   ];
 
@@ -41,10 +41,10 @@ export function Features({ className = "" }: FeaturesSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-light mb-6 tracking-widest">
-            Features
+            Services
           </h2>
-          <p className="text-xl text-white/70 font-mono tracking-wide max-w-3xl mx-auto">
-            Advanced 3D interactions powered by modern web technologies.
+          <p className="text-xl text-white/70 font-light tracking-wide max-w-3xl mx-auto">
+            脱WordPressを掲げ、ClaudeCode時代の新常識を提案するウェブ制作サービス
           </p>
         </div>
 
@@ -74,24 +74,24 @@ export function Features({ className = "" }: FeaturesSectionProps) {
         <div className="mt-16 text-center">
           <div className="inline-block p-6 border border-white/20 rounded-lg">
             <h3 className="text-2xl font-light tracking-wider mb-4">
-              Performance Metrics
+              実績・経験
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-3xl font-mono text-white mb-1">60</div>
-                <div className="text-sm text-white/70">FPS</div>
+                <div className="text-3xl font-mono text-white mb-1">15</div>
+                <div className="text-sm text-white/70">年の経験</div>
               </div>
               <div>
-                <div className="text-3xl font-mono text-white mb-1">100</div>
-                <div className="text-sm text-white/70">Elements</div>
+                <div className="text-3xl font-mono text-white mb-1">2</div>
+                <div className="text-sm text-white/70">制作実績</div>
               </div>
               <div>
-                <div className="text-3xl font-mono text-white mb-1">&lt;1</div>
-                <div className="text-sm text-white/70">Second Load</div>
+                <div className="text-3xl font-mono text-white mb-1">100%</div>
+                <div className="text-sm text-white/70">バイブス</div>
               </div>
               <div>
-                <div className="text-3xl font-mono text-white mb-1">0</div>
-                <div className="text-sm text-white/70">Dependencies</div>
+                <div className="text-3xl font-mono text-white mb-1">∞</div>
+                <div className="text-sm text-white/70">学習意欲</div>
               </div>
             </div>
           </div>
