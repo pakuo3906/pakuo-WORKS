@@ -14,6 +14,7 @@ const portfolioItems: PortfolioItem[] = [
     title: "美容サロンホームページ",
     description: "美容サロン向けのエレガントなホームページ。予約システム連携とモバイルファーストデザインを重視したバイブスコーディング作品。",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+    image: "/images/projects/beauty-salon-preview.png",
     liveUrl: "https://pakuo3906.github.io/beauty-salon-website/",
     githubUrl: "https://github.com/pakuo3906/beauty-salon-website"
   },
@@ -22,6 +23,7 @@ const portfolioItems: PortfolioItem[] = [
     title: "パクログ",
     description: "日々の学習記録や技術的な発見を記録するバイブスな個人ブログ。マークダウン対応とSEO最適化を実装。",
     tech: ["Next.js", "TypeScript", "MDX", "Tailwind CSS"],
+    image: "/images/projects/pakulog-preview.png",
     liveUrl: "https://pakulog-ey3wccmzp-pa9wos-projects.vercel.app/",
     githubUrl: "https://github.com/pakuo3906/pakulog"
   }
@@ -51,10 +53,40 @@ export function Portfolio({ className = "" }: PortfolioSectionProps) {
               className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all duration-300"
             >
               <div className="mb-6">
-                <div className="w-full h-48 bg-gradient-to-br from-white/20 to-white/5 rounded-lg mb-4 flex items-center justify-center">
-                  <span className="text-white/50 text-sm font-mono">
-                    Preview Image
-                  </span>
+                <div className="w-full h-48 bg-gradient-to-br from-white/20 to-white/5 rounded-lg mb-4 overflow-hidden relative group">
+                  {item.image && item.liveUrl ? (
+                    <a 
+                      href={item.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full h-full cursor-pointer relative"
+                    >
+                      <img
+                        src={item.image}
+                        alt={`${item.title} preview`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                      {/* ホバー時のオーバーレイ */}
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="text-white text-center">
+                          <div className="text-lg mb-1">🔗</div>
+                          <div className="text-sm font-mono">View Live Site</div>
+                        </div>
+                      </div>
+                    </a>
+                  ) : item.image ? (
+                    <img
+                      src={item.image}
+                      alt={`${item.title} preview`}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-white/50 text-sm font-mono">
+                        Preview Image
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -62,43 +94,9 @@ export function Portfolio({ className = "" }: PortfolioSectionProps) {
                 {item.title}
               </h3>
               
-              <p className="text-white/70 text-sm mb-4 leading-relaxed">
+              <p className="text-white/70 text-sm leading-relaxed">
                 {item.description}
               </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {item.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-xs bg-white/10 text-white/80 rounded-full font-mono"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex gap-4">
-                {item.liveUrl && (
-                  <a
-                    href={item.liveUrl}
-                    className="px-4 py-2 text-sm border border-white/20 text-white hover:bg-white hover:text-black transition-colors duration-200 font-mono"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live Site
-                  </a>
-                )}
-                {item.githubUrl && (
-                  <a
-                    href={item.githubUrl}
-                    className="px-4 py-2 text-sm text-white/70 hover:text-white transition-colors duration-200 font-mono"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                )}
-              </div>
             </div>
           ))}
         </div>
