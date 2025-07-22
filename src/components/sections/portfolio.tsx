@@ -14,6 +14,7 @@ const portfolioItems: PortfolioItem[] = [
     title: "美容サロンホームページ",
     description: "美容サロン向けのエレガントなホームページ。予約システム連携とモバイルファーストデザインを重視したバイブスコーディング作品。",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+    image: "/images/projects/beauty-salon-preview.png",
     liveUrl: "https://pakuo3906.github.io/beauty-salon-website/",
     githubUrl: "https://github.com/pakuo3906/beauty-salon-website"
   },
@@ -22,6 +23,7 @@ const portfolioItems: PortfolioItem[] = [
     title: "パクログ",
     description: "日々の学習記録や技術的な発見を記録するバイブスな個人ブログ。マークダウン対応とSEO最適化を実装。",
     tech: ["Next.js", "TypeScript", "MDX", "Tailwind CSS"],
+    image: "/images/projects/pakulog-preview.png",
     liveUrl: "https://pakulog-ey3wccmzp-pa9wos-projects.vercel.app/",
     githubUrl: "https://github.com/pakuo3906/pakulog"
   }
@@ -51,10 +53,20 @@ export function Portfolio({ className = "" }: PortfolioSectionProps) {
               className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 hover:bg-white/10 transition-all duration-300"
             >
               <div className="mb-6">
-                <div className="w-full h-48 bg-gradient-to-br from-white/20 to-white/5 rounded-lg mb-4 flex items-center justify-center">
-                  <span className="text-white/50 text-sm font-mono">
-                    Preview Image
-                  </span>
+                <div className="w-full h-48 bg-gradient-to-br from-white/20 to-white/5 rounded-lg mb-4 overflow-hidden">
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={`${item.title} preview`}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-white/50 text-sm font-mono">
+                        Preview Image
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
