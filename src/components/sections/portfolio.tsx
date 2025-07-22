@@ -94,43 +94,9 @@ export function Portfolio({ className = "" }: PortfolioSectionProps) {
                 {item.title}
               </h3>
               
-              <p className="text-white/70 text-sm mb-4 leading-relaxed">
+              <p className="text-white/70 text-sm leading-relaxed">
                 {item.description}
               </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {item.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-xs bg-white/10 text-white/80 rounded-full font-mono"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex gap-4">
-                {item.liveUrl && (
-                  <a
-                    href={item.liveUrl}
-                    className="px-4 py-2 text-sm border border-white/20 text-white hover:bg-white hover:text-black transition-colors duration-200 font-mono"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live Site
-                  </a>
-                )}
-                {item.githubUrl && (
-                  <a
-                    href={item.githubUrl}
-                    className="px-4 py-2 text-sm text-white/70 hover:text-white transition-colors duration-200 font-mono"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                )}
-              </div>
             </div>
           ))}
         </div>
