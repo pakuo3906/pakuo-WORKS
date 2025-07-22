@@ -10,20 +10,20 @@ interface PortfolioItem {
 
 const portfolioItems: PortfolioItem[] = [
   {
-    id: "homepage",
-    title: "コーポレートホームページ",
-    description: "バイブスコーディングで制作したレスポンシブなコーポレートサイト。モダンなデザインとスムーズなアニメーションが特徴。",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    liveUrl: "#",
-    githubUrl: "#"
+    id: "beauty-salon",
+    title: "美容サロンホームページ",
+    description: "美容サロン向けのエレガントなホームページ。予約システム連携とモバイルファーストデザインを重視したバイブスコーディング作品。",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+    liveUrl: "https://pakuo3906.github.io/beauty-salon-website/",
+    githubUrl: "https://github.com/pakuo3906/beauty-salon-website"
   },
   {
-    id: "blog",
-    title: "パーソナルブログ",
-    description: "日々の学習記録や技術的な発見を記録するブログサイト。マークダウン対応とSEO最適化を実装。",
+    id: "pakulog",
+    title: "パクログ",
+    description: "日々の学習記録や技術的な発見を記録するバイブスな個人ブログ。マークダウン対応とSEO最適化を実装。",
     tech: ["Next.js", "TypeScript", "MDX", "Tailwind CSS"],
-    liveUrl: "#",
-    githubUrl: "#"
+    liveUrl: "https://pakuo3906.github.io/pakulog/",
+    githubUrl: "https://github.com/pakuo3906/pakulog"
   }
 ];
 
